@@ -1,0 +1,12 @@
+{
+  "title": "Number Input",
+  "type": "number",
+  "options": [
+    {
+      "label": "Step",
+      "name": "step",
+      "type": "text",
+      "required": 0
+    }
+  ]
+}
