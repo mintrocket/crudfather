@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 namespace crocodicstudio\crudbooster\helpers;
 
 use Session;
@@ -10,7 +9,6 @@ use DB;
 use Route;
 use Validator;
 
-class CB extends CRUDBooster
-{
-    //This CB class is for alias of CRUDBooster class
+class CB extends CRUDBooster  {
+	//This CB class is for alias of CRUDBooster class
 }

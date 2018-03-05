@@ -1,6 +1,6 @@
 @if($command=='layout')
 <div id='{{$componentID}}' class='border-box'>
-
+	                	                		           
 	<div class="panel panel-default">
       <div class="panel-heading">
         [name]
@@ -40,28 +40,28 @@
 
 		<div class="form-group">
 			<label>Goals Value</label>
-			<input class="form-control" name='config[goals]' type='number' value='{{@$config->goals}}'/>
+			<input class="form-control" name='config[goals]' type='number' value='{{@$config->goals}}'/>			
 		</div>
 	</form>
 @elseif($command=='showFunction')
-
+	
 	@if($key == 'sql')
-		<?php
+		<?php 
 			$sqls = explode(';',$value);
 			$dataPoints = array();
-			$datax = array();
+			$datax = array();			
 
 			foreach($sqls as $i=>$sql) {
 
 				$datamerger = array();
-
+			
 				$sessions = Session::all();
 			    foreach($sessions as $key=>$val) {
 			      $sql = str_replace("[".$key."]", $val, $sql);
 			    }
 
 			    try{
-			    	$query = DB::select(DB::raw($sql));
+			    	$query = DB::select(DB::raw($sql));				    	
 				  	foreach($query as $r) {
 				  		$datax[] = $r->label;
 				  		$datamerger[] = $r->value;
@@ -72,9 +72,9 @@
 			    }
 
 			    $dataPoints[$i] = $datamerger;
-			}
+			}				
 
-			$datax = array_unique($datax);
+			$datax = array_unique($datax);			
 
 			$area_name = explode(';',$config->area_name);
 			$area_name_safe = $area_name;
@@ -83,7 +83,7 @@
 			}
 
 			$data_result = array();
-			foreach($datax as $i=>$d) {
+			foreach($datax as $i=>$d) {				
 				$dr = array();
 				$dr['y'] = $d;
 				foreach($area_name as $e=>$name) {
@@ -91,17 +91,17 @@
 					$dr[$name] = $dataPoints[$e][$i];
 				}
 				$data_result[] = $dr;
-			}
+			}			
 
 			$data_result = json_encode($data_result);
 			// $data_result = preg_replace('/"([a-zA-Z_]+[a-zA-Z0-9_]*)":/','$1:',$data_result);
 
 		?>
 		<div id="chartContainer-{{$componentID}}" style="height: 250px;"></div>
-
-
+		
+		
 		<script type="text/javascript">
-
+		
 		$(function() {
 			new Morris.Area({
 			  element: 'chartContainer-{{$componentID}}',
@@ -116,13 +116,13 @@
 			  @endif
 			  behaveLikeLine:true,
 		      hideHover: 'auto'
-			});
-		})
+			});				
+		})				
 		</script>
-
-
+		
+		
 	@else
 
 		{!! $value !!}
 	@endif
-@endif
+@endif	

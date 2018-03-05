@@ -1,4 +1,1 @@
-@php
-    $format = ($formInput['options']['php_format'])?:"Y-m-d H:i";
-    echo date($format,strtotime($value));
-@endphp
+{{ date("F, d Y H:i", strtotime($value)) }}

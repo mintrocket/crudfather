@@ -1,6 +1,6 @@
 @if($command=='layout')
 <div id='{{$componentID}}' class='border-box'>
-
+	                	                		           
 	<div class="small-box [color]">
 	    <div class='inner inner-box'>
 	      <h3>[sql]</h3>
@@ -9,7 +9,7 @@
 	    <div class="icon">
 	      <i class="ion [icon]"></i>
 	    </div>
-	    <a href="[link]" class="small-box-footer">Подробнее... <i class="fa fa-arrow-circle-right"></i></a>
+	    <a href="[link]" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	</div>
 
 	<div class='action pull-right'>
@@ -55,20 +55,20 @@
 
 	</form>
 @elseif($command=='showFunction')
-<?php
+<?php 
 	if($key == 'sql') {
 		try{
 			$sessions = Session::all();
 		    foreach($sessions as $key=>$val) {
 		      $value = str_replace("[".$key."]", $val, $value);
 		    }
-			echo reset(DB::select(DB::raw($value))[0]);
+			echo reset(DB::select(DB::raw($value))[0]);    						    				
 		}catch(\Exception $e) {
 			echo 'ERROR';
-		}
+		}	
 	}else{
 		echo $value;
 	}
-
+	
 ?>
-@endif
+@endif	

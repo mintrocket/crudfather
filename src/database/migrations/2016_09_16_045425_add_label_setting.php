@@ -14,7 +14,7 @@ class AddLabelSetting extends Migration
     {
         Schema::table('cms_settings', function (Blueprint $table) {
             //
-            $table->string('label', 50)->nullable();
+            $table->string('label')->nullable();
         });
     }
 

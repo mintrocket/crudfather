@@ -1,5 +1,13 @@
 {
-  "title": "Password Input",
-  "type": "password",
-  "options": []
+	"title":"Password Input",
+	"type":"password",
+	"attribute":{
+		"optional":{
+			"style":"string inline stylesheet",
+			"help":"string help-block",
+			"placeholder":"string placeholder",
+			"readonly":"boolean",
+			"disabled":"boolean"	
+		}		
+	}
 }

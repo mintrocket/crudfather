@@ -1,252 +1,245 @@
-<div class='form-group peta {{$header_group_class}} {{ ($errors->first($name))?"has-error":"" }}'>
-    <label class='control-label col-sm-2'>{{$label}} {!!($required)?"<span class='text-danger' title='This field is required'>*</span>":"" !!}</label>
 
-    <div class="{{$col_width?:'col-sm-10'}}">
-
-
-        <div class="input-group">
-            <input type="text" class="form-control" id="{{$name}}"
-                   {{ ($readonly)?"readonly":"" }} {{ ($required)?"required":""}} value="{{$value}}" name="{{$name}}">
-            <input type="hidden" name="input-latitude-{{$name}}" id="input-latitude-{{$name}}"
-                   value="{{ ($formInput['options']['latitude'])?$row->{$formInput['options']['latitude']}:0 }}">
-            <input type="hidden" name="input-longitude-{{$name}}" id="input-longitude-{{$name}}"
-                   value="{{ ($formInput['options']['longitude'])?$row->{$formInput['options']['longitude']}:0 }}">
-            <span class="input-group-btn">
-            <button class="btn btn-primary" onclick="showMapModal{{$name}}()" type="button">
-                <i class='fa fa-map-marker'></i> Browse Map</button>
-          </span>
-        </div><!-- /input-group -->
+                		<div class='form-group peta {{$header_group_class}} {{ ($errors->first($name))?"has-error":"" }}'>
+                			<label class='control-label col-sm-2'>{{$form['label']}} {!!($required)?"<span class='text-danger' title='This field is required'>*</span>":"" !!}</label>
+                			
+                			<div class="{{$col_width?:'col-sm-10'}}">
 
 
-        <div id='googlemaps-modal-{{$name}}' class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class='fa fa-search'></i> Browse Map</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <input id="input-search-autocomplete-{{$name}}" class="controls pac-input" autofocus type="text"
-                               placeholder="Search location here...">
-                        <div id="type-selector-{{$name}}" class="controls hide type-selector">
-                            <input type="radio" name="type" id="changetype-all" checked="checked">
-                            <label for="changetype-all">All</label>
-
-                            <input type="radio" name="type" id="changetype-establishment">
-                            <label for="changetype-establishment">Establishments</label>
-
-                            <input type="radio" name="type" id="changetype-address">
-                            <label for="changetype-address">Addresses</label>
-
-                            <input type="radio" name="type" id="changetype-geocode">
-                            <label for="changetype-geocode">Geocodes</label>
-                        </div>
-                        <div class="map" id='map-{{$name}}'></div>
-                        <br/>
-                        <p>
-                            <span class="text-info" style="font-weight: bold">Current Location :</span><br/>
-                            <span id='current-location-span-{{$name}}'>{{ ($value)?$value:'-' }}</span>
-                        </p>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="setIt{{$name}}()" data-dismiss="modal">
-                            Set It
-                        </button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                			<div class="input-group">
+						      <input type="text" class="form-control" id="{{$name}}" {{ ($readonly)?"readonly":"" }} {{ ($required)?"required":""}} value="{{$value}}" name="{{$name}}">
+						      <input type="hidden" name="input-latitude-{{$name}}" id="input-latitude-{{$name}}" value="{{ ($form['latitude'])?$row->$form['latitude']:0 }}">
+						      <input type="hidden" name="input-longitude-{{$name}}" id="input-longitude-{{$name}}" value="{{ ($form['longitude'])?$row->$form['longitude']:0 }}">
+						      <span class="input-group-btn">
+						        <button class="btn btn-primary" onclick="showMapModal{{$name}}()" type="button"><i class='fa fa-map-marker'></i> Browse Map</button>
+						      </span>
+						    </div><!-- /input-group -->
 
 
-    </div>
-</div>
-@push('bottom')
-    <script type="text/javascript">
+						    <div id='googlemaps-modal-{{$name}}' class="modal fade" tabindex="-1" role="dialog">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title"><i class='fa fa-search'></i> Browse Map</h4>
+							      </div>
+							      <div class="modal-body">
+							        
+							      	<input id="input-search-autocomplete-{{$name}}" class="controls pac-input" autofocus type="text"
+								        placeholder="Search location here...">
+								    <div id="type-selector-{{$name}}" class="controls hide type-selector">
+								      <input type="radio" name="type" id="changetype-all" checked="checked">
+								      <label for="changetype-all">All</label>
+
+								      <input type="radio" name="type" id="changetype-establishment">
+								      <label for="changetype-establishment">Establishments</label>
+
+								      <input type="radio" name="type" id="changetype-address">
+								      <label for="changetype-address">Addresses</label>
+
+								      <input type="radio" name="type" id="changetype-geocode">
+								      <label for="changetype-geocode">Geocodes</label>
+								    </div>
+								    <div class="map" id='map-{{$name}}'></div>
+								    <br/>
+								    <p>
+								    	<span class="text-info" style="font-weight: bold">Current Location :</span><br/>
+								    	<span id='current-location-span-{{$name}}'>{{ ($value)?$value:'-' }}</span>
+								    </p>
+
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-primary" onclick="setIt{{$name}}()" data-dismiss="modal">Set It</button>							        
+							      </div>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
 
 
-        var address_temp_{{$name}}, latitude_temp_{{$name}}, longitude_temp_{{$name}};
+							
 
-        function setIt {{$name}}() {
-            console.log(address_temp_{{$name}});
-            $('#{{$name}}').val(address_temp_{{$name}});
-            $("#input-latitude-{{$name}}").val(latitude_temp_{{$name}});
-            $("#input-longitude-{{$name}}").val(longitude_temp_{{$name}});
-        }
+						    </div>
+						</div>
+						@push('bottom')
+                		<script type="text/javascript">
+                		  
 
-        var is_init_map_{{$name}} = false;
+                		  	var address_temp_{{$name}},latitude_temp_{{$name}},longitude_temp_{{$name}};
 
-        function showMapModal {{$name}}() {
-            var api_key = "{{CRUDBooster::getSetting('google_api_key')}}";
+                		  	function setIt{{$name}}() {
+                		  		console.log(address_temp_{{$name}});
+                		  		$('#{{$name}}').val(address_temp_{{$name}});
+                		  		$("#input-latitude-{{$name}}").val(latitude_temp_{{$name}});
+						        $("#input-longitude-{{$name}}").val(longitude_temp_{{$name}});	
+                		    }
 
-            if (api_key == '') {
-                alert('GOOGLE_API_KEY is missing, please set at setting !');
-                return false;
-            }
+                			var is_init_map_{{$name}} = false;
+                		  function showMapModal{{$name}}() {
+                		  	var api_key = "{{CRUDBooster::getSetting('google_api_key')}}";
 
-            $('#googlemaps-modal-{{$name}}').modal('show');
-        }
+                		  	if(api_key == '') {
+                		  		alert('GOOGLE_API_KEY is missing, please set at setting !');                		  		
+                		  		return false;
+                		  	}
 
-        $('#googlemaps-modal-{{$name}}').on('shown.bs.modal', function () {
-            if (is_init_map_{{$name}} == false) {
-                console.log('Init Map {{$name}}');
-                initMap{{$index}}();
-                is_init_map_{{$name}} = true;
-            }
-        });
+                		  	$('#googlemaps-modal-{{$name}}').modal('show');                		  	                		  
+                		  }
 
-        var geocoder;
+                		  $('#googlemaps-modal-{{$name}}').on('shown.bs.modal', function(){
+                		  		if(is_init_map_{{$name}} == false) {
+	                		  		console.log('Init Map {{$name}}');
+	                		  		initMap{{$index}}();
+	                		  		is_init_map_{{$name}} = true;
+	                		  	}
+                		  });
 
-        function initMap {{$index}}() {
-            geocoder = new google.maps.Geocoder();
-            var map = new google.maps.Map(document.getElementById('map-{{$name}}'), {
-                @if($row->{$formInput['options']['latitude']} && $row->{$formInput['options']['longitude']})
-                center: {
-                    lat: <?php echo $row->{$formInput['options']['latitude']} ?: 0;?>,
-                    lng: <?php echo $row->{$formInput['options']['longitude']} ?: 0;?> },
-                @endif
-                zoom: 12
-            });
+                		  var geocoder;
+                		  
+					      function initMap{{$index}}() {
+					      	geocoder = new google.maps.Geocoder();
+					        var map = new google.maps.Map(document.getElementById('map-{{$name}}'), {
+					          @if($row->{$form['latitude']} && $row->{$form['longitude']})
+							  	center: {lat: <?php echo $row->{$form['latitude']}?:0;?>, lng: <?php echo $row->{$form['longitude']}?:0;?> },
+							  @endif
+					          zoom: 12
+					        });	
 
-            var marker_default_location = new google.maps.Marker({
-                map: map,
-                draggable: true,
-            });
+					        var marker_default_location = new google.maps.Marker({
+					          map: map,
+					          draggable:true,					          					          
+					        });				        							
+					       
+					        var input = /** @type  {!HTMLInputElement} */(
+					            document.getElementById('input-search-autocomplete-{{$name}}'));
 
-            var input = /** @type  {!HTMLInputElement} */(
-                document.getElementById('input-search-autocomplete-{{$name}}'));
+					        var types = document.getElementById('type-selector-{{$name}}');
+					        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+					        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
-            var types = document.getElementById('type-selector-{{$name}}');
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+					        var autocomplete = new google.maps.places.Autocomplete(input);
+					        autocomplete.bindTo('bounds', map);
 
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
+					        var infoWindow = new google.maps.InfoWindow();
 
-            var infoWindow = new google.maps.InfoWindow();
+					        // Try HTML5 geolocation.
 
-            // Try HTML5 geolocation.
+					        @if(!$row->$form['latitude'] && !$row->$form['longitude'])
 
-            @if(!$row->$formInput['options']['latitude'] && !$row->$formInput['options']['longitude'])
+					        	latitude_temp_{{$name}} = 0;
+					          	longitude_temp_{{$name}} = 0;
+					            var pos = {
+					              lat: latitude_temp_{{$name}},
+					              lng: longitude_temp_{{$name}}
+					            };
+					            map.setCenter(pos);					            					            					      
+					            map.setZoom(1);
 
-                latitude_temp_{{$name}} = 0;
-            longitude_temp_{{$name}} = 0;
-            var pos = {
-                lat: latitude_temp_{{$name}},
-                lng: longitude_temp_{{$name}}
-            };
-            map.setCenter(pos);
-            map.setZoom(1);
+					        @else 
+					        	var pos = {
+					              lat: {{ $row->$form['latitude']?:0 }},
+					              lng: {{ $row->$form['longitude']?:0 }}
+					            };
 
-                    @else
-            var pos = {
-                    lat: {{ $row->{$formInput['options']['latitude']}?:0 }},
-                    lng: {{ $row->{$formInput['options']['longitude']}?:0 }}
-                };
+					            latitude_temp_{{$name}} = {{ $row->$form['latitude']?:0 }};
+					          	longitude_temp_{{$name}} = {{ $row->$form['longitude']?:0 }};
 
-            latitude_temp_{{$name}} = {{ $row->$formInput['options']['latitude']?:0 }};
-            longitude_temp_{{$name}} = {{ $row->$formInput['options']['longitude']?:0 }};
+					          	address_temp_{{$name}} = "{{$value}}";
 
-            address_temp_{{$name}} = "{{$value}}";
+					            map.setCenter(pos);
+								    
+							   	marker_default_location.setPosition(pos);
 
-            map.setCenter(pos);
+							   	infoWindow.close();
+							  	infoWindow.setContent("{{$value}}");
+				          		infoWindow.open(map, marker_default_location);
 
-            marker_default_location.setPosition(pos);
+					        @endif
 
-            infoWindow.close();
-            infoWindow.setContent("{{$value}}");
-            infoWindow.open(map, marker_default_location);
+					        google.maps.event.addListener(marker_default_location, 'dragend', function(marker_default_location){
+					        	
+					        	  geocoder.geocode({
+								    latLng: marker_default_location.latLng
+								  }, function(responses) {
+								    if (responses && responses.length > 0) {
+								      address = responses[0].formatted_address;
+								    } else {
+								      address = 'Cannot determine address at this location.';
+								    }
 
-            @endif
+								    address_temp_{{$name}} = address;
 
-            google.maps.event.addListener(marker_default_location, 'dragend', function (marker_default_location) {
+								    infoWindow.setContent(address);								    
+								   								  	
+								  	$('#current-location-span-{{$name}}').text(address);															    
+								    
+								  });
 
-                geocoder.geocode({
-                    latLng: marker_default_location.latLng
-                }, function (responses) {
-                    if (responses && responses.length > 0) {
-                        address = responses[0].formatted_address;
-                    } else {
-                        address = 'Cannot determine address at this location.';
-                    }
+						        var latLng = marker_default_location.latLng; 
+						        latitude = latLng.lat();
+						        longitude = latLng.lng();
+						        						          
+						        latitude_temp_{{$name}} = latitude;
+						        longitude_temp_{{$name}} = longitude;
 
-                    address_temp_{{$name}} = address;
+						     });
 
-                    infoWindow.setContent(address);
+					        autocomplete.addListener('place_changed', function() {
+					          infoWindow.close();
+					          marker_default_location.setVisible(false);
 
-                    $('#current-location-span-{{$name}}').text(address);
+					          var place = autocomplete.getPlace();
 
-                });
+					          if (!place.geometry) {
+					            window.alert("Autocomplete's returned place contains no geometry");
+					            return;
+					          }
+					      
+					          if (place.geometry.viewport) {
+					            map.fitBounds(place.geometry.viewport);
+					          } else {
+					            map.setCenter(place.geometry.location);
+					            map.setZoom(17); 
+					          }
+			
+					          marker_default_location.setPosition(place.geometry.location);
+					          marker_default_location.setVisible(true);
 
-                var latLng = marker_default_location.latLng;
-                latitude = latLng.lat();
-                longitude = latLng.lng();
+					          var address = '';
+					          if (place.address_components) {
+					            address = [
+					              (place.address_components[0] && place.address_components[0].short_name || ''),
+					              (place.address_components[1] && place.address_components[1].short_name || ''),
+					              (place.address_components[2] && place.address_components[2].short_name || '')
+					            ].join(' ');
+					          }
 
-                latitude_temp_{{$name}} = latitude;
-                longitude_temp_{{$name}} = longitude;
+					          var latitude = place.geometry.location.lat();
+							  var longitude = place.geometry.location.lng(); 
 
-            });
+							  address_temp_{{$name}} = address;
 
-            autocomplete.addListener('place_changed', function () {
-                infoWindow.close();
-                marker_default_location.setVisible(false);
+							  $('#current-location-span-{{$name}}').text(address);
 
-                var place = autocomplete.getPlace();
+							  infoWindow.setContent(address);
 
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
+							  latitude_temp_{{$name}} = latitude;
+							  longitude_temp_{{$name}} = longitude;							  
 
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17);
-                }
+					          infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+					          infoWindow.open(map, marker_default_location);
+					        });
 
-                marker_default_location.setPosition(place.geometry.location);
-                marker_default_location.setVisible(true);
+					        function setupClickListener(id, types) {
+					          var radioButton = document.getElementById(id);
+					          radioButton.addEventListener('click', function() {
+					            autocomplete.setTypes(types);
+					          });
+					        }
 
-                var address = '';
-                if (place.address_components) {
-                    address = [
-                        (place.address_components[0] && place.address_components[0].short_name || ''),
-                        (place.address_components[1] && place.address_components[1].short_name || ''),
-                        (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                }
-
-                var latitude = place.geometry.location.lat();
-                var longitude = place.geometry.location.lng();
-
-                address_temp_{{$name}} = address;
-
-                $('#current-location-span-{{$name}}').text(address);
-
-                infoWindow.setContent(address);
-
-                latitude_temp_{{$name}} = latitude;
-                longitude_temp_{{$name}} = longitude;
-
-                infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-                infoWindow.open(map, marker_default_location);
-            });
-
-            function setupClickListener(id, types) {
-                var radioButton = document.getElementById(id);
-                radioButton.addEventListener('click', function () {
-                    autocomplete.setTypes(types);
-                });
-            }
-
-            setupClickListener('changetype-all', []);
-            setupClickListener('changetype-address', ['address']);
-            setupClickListener('changetype-establishment', ['establishment']);
-            setupClickListener('changetype-geocode', ['geocode']);
-        }
-
-    </script>
-@endpush
+					        setupClickListener('changetype-all', []);
+					        setupClickListener('changetype-address', ['address']);
+					        setupClickListener('changetype-establishment', ['establishment']);
+					        setupClickListener('changetype-geocode', ['geocode']);
+					      }
+					      
+					    </script>		
+					    @endpush        					    

@@ -50,7 +50,8 @@ return [
 	'log_forgot'		      =>'Alguien con la dirección IP :ip solicitó su contraseña por email a :email',
 	'log_logout'		      =>':email se desconectó',
 	'alert_delete_selected'         =>'¿Seguro que quieres eliminar todos los elementos seleccionados?',
-	'alert_delete_selected_success' =>'¡El borrado de los elementos seleccionados se ha completado con éxito!',
+	'alert_delete_selected_success' =>'¡El borrado de los elementos seleccionados se ha completado con éxito!',	
+	'alert_bulk_action_button'      =>'Está seguro que quiere',
 	'alert_action' 					=>'¡Has :action con éxito!',
 	'alert_add_data_success'        =>'¡Los datos han sido añadidos!',
 	'alert_add_data_failed'         =>'¡Algo ha fallado al grabar los datos!',
@@ -68,6 +69,7 @@ return [
 	'alert_required' 				=>'Asegurate que has rellenado todos los campos obligatorios',
 	'alert_error_ajax'				=>'Parece que tenemos problemas en el sistema, vamos a intentar corregirlo lo antes posible !',
 	'alert_validation_error'		=>'Rellena el formulario correctamente : :error',
+	'alert_select_a_data'			=>'Por favor, seleccione al menos un registro',
 
 	'add_data_page_title'    => 'Añadir :module',
 	'edit_data_page_title'   => 'Editar :module',    'button_add_to_table'    =>'Agregar a la Tabla',
@@ -138,7 +140,7 @@ return [
     'online'               => 'En línea',
     'controller_route_404' => 'Controlador o Ruta no encontrado(a).',
     'home'                 => 'Principal',
-    'Notificactions'	  => 'Notificaciones',
+    'Notifications'	  	=> 'Notificaciones',
     'Privileges'    	  => 'Privilegios',
     'Privileges_Roles'    => 'Privilegios & Roles',
     'Add_New_Privilege'   => 'Añadir Nuevo Privilegio',
@@ -235,26 +237,21 @@ return [
     'datamodal_select'=>'Seleccionar',
     'datamodal_search_and_enter'=>'Buscar y enter...',
     'datamodal_enter_to_search'=>'Enter para buscar',
-    'datamodal_browse_data'=>'Escojer Dato' ,
-
-    'datamodal_select'=>'Select',
-    'datamodal_search_and_enter'=>'Search and enter...',
-    'datamodal_enter_to_search'=>'Enter to search',
-    'datamodal_browse_data'=>'Browse Data' ,
+    'datamodal_browse_data'=>'Escoger Dato',
 
 	//action confirmation
     'confirmation_title' => 'Confirmación',
     'confirmation_text' => '¿Está seguro que desea realizar esta acción?',
 
-    'datamodal_browse_file'=>'Browse File' ,
+    'datamodal_browse_file'=>'Escoger Archivo' ,
     
 
     //child 
-    'table_detail'             =>'Table Detail',
-    'your_file_size_is_too_big'=>'Your file size is too big',
-    'save_changes'             =>'Save Changes',
-    'please_complete_the_form' =>'Please complete the form !',
-    'this_field_is_required'   =>'This field is required',
-    'text_form'                => 'Form',
-     "your_file_extension_is_not_allowed "=>"Your file extension is not allowed !",
+    'table_detail'             =>'Tabla de Detalles',
+    'your_file_size_is_too_big'=>'El tamaño del archivo es demasiado grande',
+    'save_changes'             =>'Guardar Cambios',
+    'please_complete_the_form' =>'Por favor, complete el formulario!',
+    'this_field_is_required'   =>'Este campo es requerido',
+    'text_form'                => 'Formulario',
+     "your_file_extension_is_not_allowed "=>"La extensión del archivo no es permitida!",
 ];
