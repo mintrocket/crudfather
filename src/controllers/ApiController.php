@@ -23,7 +23,7 @@ class ApiController extends Controller {
 
 
 	public function hook_before( &$postdata ) {
-
+		
 	}
 
 	public function hook_after( $postdata, &$result ) {
@@ -58,7 +58,7 @@ class ApiController extends Controller {
 
 		$debug_mode_message = 'You are in debug mode !';
 
-		/* 
+		/*
 		| ----------------------------------------------
 		| Method Type validation
 		| ----------------------------------------------
@@ -76,7 +76,7 @@ class ApiController extends Controller {
 			}
 		}
 
-		/* 
+		/*
 		| ----------------------------------------------
 		| Check the row is exists or not
 		| ----------------------------------------------
@@ -93,7 +93,7 @@ class ApiController extends Controller {
 		@$responses = unserialize( $row_api->responses );
 
 
-		/* 
+		/*
 		| ----------------------------------------------
 		| User Data Validation
 		| ----------------------------------------------
@@ -112,10 +112,6 @@ class ApiController extends Controller {
 				$config            = $param['config'];
 				$used              = $param['used'];
 				$format_validation = array();
-
-				if( $used && !$required && $value == '' && !in_array($type, ['image','file'])) {
-					continue;
-				}
 
 				if ( $used == '0' ) {
 					continue;
@@ -172,7 +168,7 @@ class ApiController extends Controller {
 				$input_validator[ $name ] = trim($value);
 				if(count($format_validation)) $data_validation[ $name ] = implode( '|', $format_validation );
 			}
-			
+
 			$validator = Validator::make( $input_validator, $data_validation );
 			if ( $validator->fails() ) {
 				$message               = $validator->errors()->all();
@@ -550,16 +546,16 @@ class ApiController extends Controller {
 						$ext  = $file->getClientOriginalExtension();
 						$filePath = 'uploads/'.date('Y-m');
 
-						//Create Directory Monthly 
-						Storage::makeDirectory($filePath);						
+						//Create Directory Monthly
+						Storage::makeDirectory($filePath);
 
 						//Move file to storage
 						$filename = md5(str_random(5)).'.'.$ext;
-						if(Storage::putFileAs($filePath,$file,$filename)) {						
+						if(Storage::putFileAs($filePath,$file,$filename)) {
 							$v = $filePath.'/'.$filename;
 							$row_assign[$name] = $v;
-						}					  
-					}	
+						}
+					}
 		    	}elseif ($type == 'base64_file') {
 		    		$filedata = base64_decode($value);
 					$f = finfo_open();
@@ -571,20 +567,20 @@ class ApiController extends Controller {
 							$filePath = 'uploads/'.date('Y-m');
 							Storage::makeDirectory($filePath);
 							$filename = md5(str_random(5)).'.'.$mime_type;
-							if(Storage::put($filePath.'/'.$filename,$filedata)) {								
+							if(Storage::put($filePath.'/'.$filename,$filedata)) {
 								$v = $filePath.'/'.$filename;
 								$row_assign[$name] = $v;
 							}
 						}
 					}
 		    	}elseif ($type == 'password') {
-		    		$row_assign[$name] = Hash::make(g($name));		    		
+		    		$row_assign[$name] = Hash::make(g($name));
 		    	}
-		    	
+
 		    }
 
 		    //Make sure if saving/updating data additional param included
-		    $arrkeys = array_keys($row_assign);      
+		    $arrkeys = array_keys($row_assign);
 		    foreach($posts as $key => $value) {
 		        if(!in_array($key, $arrkeys)) {
 		          $row_assign[$key] = $value;
@@ -593,13 +589,13 @@ class ApiController extends Controller {
 
 
 		    if($action_type == 'save_add') {
-		    	
+
 		    	$row_assign['id'] = CRUDBooster::newId($table);
 		    	DB::table($table)->insert($row_assign);
 		    	$result['api_status']  = ($row_assign['id'])?1:0;
-				$result['api_message'] = ($row_assign['id'])?'success':'failed';				
+				$result['api_message'] = ($row_assign['id'])?'success':'failed';
 				if(CRUDBooster::getSetting('api_debug_mode')=='true') {
-       
+
 					$result['api_authorization'] = $debug_mode_message;
 				}
 				$result['id'] = $row_assign['id'];
@@ -610,7 +606,7 @@ class ApiController extends Controller {
 		    		$pk = CRUDBooster::pk($table);
 		    		$update = DB::table($table);
 				    $update->where($table.'.'.$pk,$row_assign['id']);
-            
+
             if ( $row_api->sql_where ) {
 						$update->whereraw( $row_api->sql_where );
 					}
@@ -714,7 +710,3 @@ class ApiController extends Controller {
 	}
 
 }
-
-
-
-

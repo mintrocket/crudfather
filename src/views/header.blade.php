@@ -2,8 +2,8 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{url(config('crudbooster.ADMIN_PATH'))}}" title='{{Session::get('appname')}}' class="logo">{{CRUDBooster::getSetting('appname')}}</a>
-
+    <a href="{{url(config('crudbooster.ADMIN_PATH'))}}" title='{{CRUDBooster::getSetting('appname')}}' class="logo"><b>Mint</b>Admin{{-- CRUDBooster::getSetting('appname') --}}</a>
+<i class="fab fa-accessible-icon text-normal"></i>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -12,7 +12,7 @@
         </a>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">      
+            <ul class="nav navbar-nav">
 
             <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title='Notifications' aria-expanded="false">
@@ -54,7 +54,7 @@
                             <p>
                                 {{ CRUDBooster::myName() }}
                                 <small>{{ CRUDBooster::myPrivilegeName() }}</small>
-                                <small><em><?php echo date('d F Y')?></em> </small>                                
+                                <small><em><?php echo date('d F Y')?></em> </small>
                             </p>
                         </li>
 
@@ -64,17 +64,17 @@
                                 <a href="{{ route('AdminCmsUsersControllerGetProfile') }}?m=0" class="btn btn-default btn-flat"><i class='fa fa-user'></i> {{trans("crudbooster.label_button_profile")}}</a>
                             </div>
                             <div class="pull-{{ trans('crudbooster.right') }}">
-                                <a title='Lock Screen' href="{{ route('getLockScreen') }}" class='btn btn-default btn-flat'><i class='fa fa-key'></i></a> 
-                                <a href="javascript:void(0)" onclick="swal({   
-                                    title: '{{trans('crudbooster.alert_want_to_logout')}}',                                       
-                                    type:'info',   
-                                    showCancelButton:true, 
-                                    allowOutsideClick:true,  
-                                    confirmButtonColor: '#DD6B55',   
-                                    confirmButtonText: '{{trans('crudbooster.button_logout')}}',   
+                                <a title='Lock Screen' href="{{ route('getLockScreen') }}" class='btn btn-default btn-flat'><i class='fa fa-key'></i></a>
+                                <a href="javascript:void(0)" onclick="swal({
+                                    title: '{{trans('crudbooster.alert_want_to_logout')}}',
+                                    type:'info',
+                                    showCancelButton:true,
+                                    allowOutsideClick:true,
+                                    confirmButtonColor: '#DD6B55',
+                                    confirmButtonText: '{{trans('crudbooster.button_logout')}}',
                                     cancelButtonText: '{{trans('crudbooster.button_cancel')}}',
-                                    closeOnConfirm: false 
-                                    }, function(){                                                                                 
+                                    closeOnConfirm: false
+                                    }, function(){
                                         location.href = '{{ route("getLogout") }}';
 
                                     });" title="{{trans('crudbooster.button_logout')}}" class="btn btn-danger btn-flat"><i class='fa fa-power-off'></i></a>

@@ -31,7 +31,7 @@
     <link rel='stylesheet' href='{{asset("vendor/crudbooster/assets/css/main.css")}}'/>
     <style type="text/css">
       .login-page, .register-page {
-          background: {{ CRUDBooster::getSetting("login_background_color")?:'#dddddd'}} url('{{ CRUDBooster::getSetting("login_background_image")?asset(CRUDBooster::getSetting("login_background_image")):asset('vendor/crudbooster/assets/bg_blur3.jpg') }}');
+          background: {{ CRUDBooster::getSetting("login_background_color")?:'#dddddd'}} url('{{ CRUDBooster::getSetting("login_background_image")?asset(CRUDBooster::getSetting("login_background_image")):asset('vendor/crudbooster/assets/bg_blur1.jpg') }}');
           color: {{ CRUDBooster::getSetting("login_font_color")?:'#ffffff' }} !important;
           background-repeat: no-repeat;
           background-position: center;
@@ -41,7 +41,7 @@
         margin: 2% auto;
       }
       .login-box-body {
-        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);              
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
         background: rgba(255,255,255,0.9);
         color: {{ CRUDBooster::getSetting("login_font_color")?:'#666666' }} !important;
       }
@@ -56,17 +56,17 @@
     <div class="login-box">
       <div class="login-logo">
         <a href="{{url('/')}}">
-            <img title='{!!(Session::get('appname') == 'CRUDBooster')?"<b>CRUD</b>Booster":CRUDBooster::getSetting('appname')!!}' src='{{ CRUDBooster::getSetting("logo")?asset(CRUDBooster::getSetting('logo')):asset('vendor/crudbooster/assets/logo_crudbooster.png') }}' style='max-width: 100%;max-height:170px'/>
+            <img title='{!!(Session::get('appname') == 'CRUDBooster')?"<b>CRUD</b>Booster":CRUDBooster::getSetting('appname')!!}' src='{{ CRUDBooster::getSetting("logo")?asset(CRUDBooster::getSetting('logo')):asset('vendor/crudbooster/assets/logo_crudbooster.png') }}' style='max-width: 100%;max-height:170px;opacity:0;'/>
         </a>
-      </div><!-- /.login-logo -->      
+      </div><!-- /.login-logo -->
       <div class="login-box-body">
-	  
+
     		@if ( Session::get('message') != '' )
         		<div class='alert alert-warning'>
         			{{ Session::get('message') }}
-        		</div>	
-    		@endif 
-		
+        		</div>
+    		@endif
+
         <p class='login-box-msg'>{{trans("crudbooster.login_message")}}</p>
         <form autocomplete='off' action="{{ route('postLogin') }}" method="post">
 		  <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -75,20 +75,20 @@
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input autocomplete='off'  type="password" class="form-control" name='password' required placeholder="Password"/>
+            <input autocomplete='off'  type="password" class="form-control" name='password' required placeholder="Пароль"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div style="margin-bottom:10px" class='row'>
             <div class='col-xs-12'>
-                <button type="submit" class="btn btn-primary btn-block btn-flat"><i class='fa fa-lock'></i> {{trans("crudbooster.button_sign_in")}}</button>                
+                <button type="submit" class="btn btn-primary btn-block btn-flat"><i class='fa fa-lock'></i> {{trans("crudbooster.button_sign_in")}}</button>
             </div>
-          </div>       
-          
+          </div>
+
           <div class='row'>
             <div class='col-xs-12' align="center"><p style="padding:10px 0px 10px 0px">{{trans("crudbooster.text_forgot_password")}} <a href='{{route("getForgot")}}'>{{trans("crudbooster.click_here")}}</a>   </p></div>
           </div>
         </form>
-        
+
 
 		<br/>
         <!--a href="#">I forgot my password</a-->
@@ -102,6 +102,6 @@
     <!-- jQuery 2.1.3 -->
     <script src="{{asset('vendor/crudbooster/assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="{{asset('vendor/crudbooster/assets/adminlte/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script> 
+    <script src="{{asset('vendor/crudbooster/assets/adminlte/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
   </body>
 </html>
