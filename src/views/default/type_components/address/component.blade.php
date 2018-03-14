@@ -20,26 +20,24 @@
 	    console.log($('#{{$name}}').val())
 	  }
 
-	  window.onload = ()=> {
-	    $(() => {
-	        console.log('init suggestions')
-	        $('#{{$name}}').suggestions({
-	            addon: "spinner",
-	            token: "08e783f05fe1d3f7b81850052f6e93ea3701fc69",
-	            type: "ADDRESS",
-	            count: 10,
-	            hink: "Выберите вариант или продолжите ввод",
-	            initializeInterval: 100,
-	            geoLocation: false,
-	            restrict_value: true,
-	            constraints: {
-	                locations: {
-	                    kladr_id: "7200000100000",
-	                },
-	            },
-	            onSelect: showSelected
-	        });
-	    });
-	  }
+    $(() => {
+        console.log('init suggestions')
+        $('#{{$name}}').suggestions({
+            addon: "spinner",
+            token: "08e783f05fe1d3f7b81850052f6e93ea3701fc69",
+            type: "ADDRESS",
+            count: 10,
+            hink: "Выберите вариант или продолжите ввод",
+            initializeInterval: 100,
+            geoLocation: false,
+            restrict_value: true,
+            constraints: {
+                locations: {
+                    kladr_id: "7200000100000",
+                },
+            },
+            onSelect: showSelected
+        });
+    });
 	</script>
 @endpush
