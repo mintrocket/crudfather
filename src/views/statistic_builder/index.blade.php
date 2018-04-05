@@ -387,10 +387,8 @@
 
 									<div class="panel panel-default">
 											<div class="panel-heading" style="display:flex; flex-direction: row; align-items:center; justify-content: space-between;" id="charttitle{{$chartarea->id}}">
-												<label>{{$value['name']}}</label>
-												@if($value['count'])
+													<label>{{$value['name']}}</label>
 													<label>Всего заказов: {{$value['count']}}</label>
-												@endif
 											</div>
 								      <div class="panel-body">
 												<div id="chartContainer-{{$chartarea->id}}" style="height: 250px;"></div>
