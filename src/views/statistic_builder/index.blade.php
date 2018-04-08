@@ -449,7 +449,8 @@
 
 									$.get(e.target.action+'?date_from='+date_from+'&date_to='+date_to, response => {
 										console.log(response);
-										$('#charttitle{{$chartarea->id}}').html(response.name);
+										$('#charttitle1{{$chartarea->id}}').html(response.name)
+										$('#charttitle2{{$chartarea->id}}').html('Всего заказов: ' + response.count)
 										chartarea{{$chartarea->id}}.setData(response.data);
 									});
 								});
