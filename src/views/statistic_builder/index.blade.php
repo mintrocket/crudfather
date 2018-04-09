@@ -7,7 +7,7 @@
     <script type="text/javascript">
 
         $(function() {
-						setTimeout(()=> { location.reload(); }, 60000);
+						// setTimeout(()=> { location.reload(); }, 60000);
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
