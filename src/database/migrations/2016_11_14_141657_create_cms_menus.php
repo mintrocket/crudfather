@@ -22,7 +22,10 @@ class CreateCmsMenus extends Migration
             $table->integer('parent_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->boolean('is_dashboard')->default(0);
-            $table->integer('id_cms_privileges')->nullable();
+
+            $table->integer('id_cms_privileges')->nullable(); // old
+            $table->text('cms_privileges')->nullable(); // new
+
             $table->integer('sorting')->nullable();
 
             $table->timestamps();
