@@ -84,9 +84,9 @@
             </div>
           </div>
 
-          <div class='row'>
+          <!-- <div class='row'>
             <div class='col-xs-12' align="center"><p style="padding:10px 0px 10px 0px">{{trans("crudbooster.text_forgot_password")}} <a href='{{route("getForgot")}}'>{{trans("crudbooster.click_here")}}</a>   </p></div>
-          </div>
+          </div> -->
         </form>
 
 
