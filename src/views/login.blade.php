@@ -61,13 +61,15 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
 
-    	<div class='alert alert-warning'>
-          @if ( Session::get('error') != '')
+    	  @if ( Session::get('error') != '')
+            <div class='alert alert-warning'>
               {{ Session::get('error') }}
+            </div>
           @elseif ( Session::get('message') != '')
+            <div class='alert alert-warning'>
               {{ Session::get('message') }}
+            </div>
           @endif
-        </div>
 
         <p class='login-box-msg'>{{trans("crudbooster.login_message")}}</p>
         <form autocomplete='off' action="{{ route('postLogin') }}" method="post">
