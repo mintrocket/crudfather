@@ -1,11 +1,10 @@
 <?php
-if ($formInput['options']['value']){
-    $dataEnum = explode(';', $formInput['options']['enum']);
+if ($form['enum']){
+    $dataEnum = $form['enum'];
     $result = [];
-    foreach (explode(';', $formInput['options']['value']) as $i => $v) {
-        if (in_array($v, explode(';', $value))) {
-            $result[] = $dataEnum[$i];
-        }
+    foreach (explode(';', $value) as $i => $v) {
+
+            $result[] = $dataEnum[$v];
     }
     $result = implode(', ', $result);
 } else {
