@@ -1351,6 +1351,8 @@ class CBController extends Controller {
 
 	public function getDetail($id)	{
 		$this->cbLoader();
+
+        $this->hook_before_detail($id);
 		$row        = DB::table($this->table)->where($this->primary_key,$id)->first();
 
 		if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_detail==FALSE) {
@@ -1716,5 +1718,9 @@ class CBController extends Controller {
 
 	public function hook_after_delete($id) {
 	}
+
+    public function hook_before_detail($id)
+    {
+    }
 
 }
