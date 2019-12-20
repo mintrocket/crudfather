@@ -33,7 +33,7 @@
             restrict_value: true,
             constraints: {
                 locations: {
-                    kladr_id: "7200000100000",
+                    kladr_id: "7200000000000",
                 },
             },
             onSelect: showSelected
