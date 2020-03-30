@@ -24,7 +24,7 @@
         console.log('init suggestions')
         $('#{{$name}}').suggestions({
             addon: "spinner",
-            token: "08e783f05fe1d3f7b81850052f6e93ea3701fc69",
+            token: "e1da0e0f867d0e52e25f6193a3c6d4c44f97726f",
             type: "ADDRESS",
             count: 10,
             hink: "Выберите вариант или продолжите ввод",
